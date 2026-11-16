@@ -20,3 +20,16 @@ All design decisions must be consistent with the approved UniPlan SRS.
 
 ## Status
 In Progress
+
+
+## Proposed Technology Stack
+
+| Layer | Technology | Purpose |
+|---|---|---|
+| Frontend | HTML, CSS, JavaScript | User Interface |
+| Backend | Python, Flask | Application Logic and APIs |
+| Database | PostgreSQL | Structured Data Storage |
+| Architecture | Modular Monolith | System Organization |
+| Design Pattern | MVC | Separation of Responsibilities |
+
+**Status:** Proposed — subject to design validation.
