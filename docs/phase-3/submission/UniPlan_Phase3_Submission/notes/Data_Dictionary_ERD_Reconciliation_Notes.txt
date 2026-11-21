@@ -1,0 +1,28 @@
+UNIPLAN — DATA DICTIONARY / ERD RECONCILIATION
+Date: 21 November 2026
+
+Documented entity inventory:
+- 26 core SQL tables in UniPlan_SQLite_Schema_v9_1_Final.sql.
+- 5 optional/deferred M-16 concepts: COURSE_MATERIAL, ANNOUNCEMENT, GOAL, ROUTINE, JOURNAL_ENTRY.
+- 4 proposed H-08 concepts: STUDENT_PREFERENCE, STUDENT_AVAILABILITY, STUDENT_COURSE_PROFILE, NOTIFICATION.
+- Total: 35 documented entities.
+
+Relationship inventory:
+- Data Dictionary v9: 53 relationships total.
+- 48 non-H-08 relationships + 5 proposed H-08 relationships.
+- ERD v5 previously displayed 51 relationships. Two missing non-H-08 connectors were added:
+  1) USER -> COURSE_MATERIAL (uploaded_by; optional uploader)
+  2) SECTION -> ANNOUNCEMENT (optional section target)
+- Reconciled ERD now displays 53 connectors across four pages (23 + 16 + 9 + 5).
+
+Important classification detail:
+The two added relationships point to M-16 entities that remain optional/deferred. Adding their relationships to the dictionary/ERD does not promote those entities into the 26-table core SQL schema.
+
+Core SQL verification performed on the supplied file:
+- 26 CREATE TABLE statements.
+- 1 explicit index: ux_one_selected_timetable_per_plan.
+- 2 assignment-submission immutability triggers.
+- Seven editable sequence source files parse as XML.
+- Class Diagram contains 53 associations across seven pages.
+
+Do not treat proposed H-08 items or M-16 optional/deferred items as TA-approved implementation scope without confirmation.

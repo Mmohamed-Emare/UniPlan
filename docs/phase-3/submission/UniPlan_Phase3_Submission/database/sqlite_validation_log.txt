@@ -1,0 +1,50 @@
+================================================================================
+UniPlan — SQLite Schema Validation Execution Log
+Timestamp (UTC): 2026-11-20T18:25:33.841950+00:00
+Validator Script: validate_uniplan_schema.py (newly created)
+Target A: UniPlan_SQLite_Schema_v9_Reconstructed_From_v9_1.sql (RECONSTRUCTED trigger-free v9 baseline — NOT original v9)
+Target B: UniPlan_SQLite_Schema_v9_1_Final.sql (original uploaded v9.1 schema with immutability triggers)
+================================================================================
+
+--- AUTOMATED STRUCTURAL PARITY CHECK (TARGET A vs TARGET B) ---
+[STRUCTURAL_PARITY] PASS       | Automated DDL structural comparison (reconstructed v9 vs v9.1) -> Confirmed 100% identical DDL across all 26 Core tables and 1 explicit index(es) (including ux_one_selected_timetable_per_plan); confirmed sole structural delta is the 2 deliberate triggers in v9.1: ['trg_assignment_submission_no_delete', 'trg_assignment_submission_no_update'].
+
+--- TARGET A: UniPlan_SQLite_Schema_v9_Reconstructed_From_v9_1.sql ---
+[T01] PASS       | Core 26-table baseline & deferred appendices check -> Verified exact 26 core baseline tables; Appendix A/B deferred/proposed tables remain uncreated.
+[T02] PASS       | Trigger presence/absence check (v9 reconstructed vs v9.1) -> Confirmed reconstructed v9 baseline contains 0 triggers (both immutability triggers removed).
+[T03] PASS       | PRAGMA foreign_keys = ON enforcement -> PRAGMA foreign_keys = 1 verified; orphan STUDENT_PROFILE insert rejected.
+[T04] PASS       | User role enum, email uniqueness & profile cascade -> Role enum, email uniqueness, and USER -> STUDENT_PROFILE cascade verified.
+[T05] PASS       | [DATA-STATE TEST ONLY] Prerequisite self-loop (DDL) vs multi-hop cycle check (service layer) -> DATA-STATE TEST ONLY: DDL blocked direct self-loop (203->203) and stored multi-hop edges; multi-hop DAG cycle prevention is NOT enforced by SQLite DDL and requires service-layer enforcement.
+[T06] PASS       | Multi-attempt course completion & prerequisite satisfaction -> Retained both FAILED and PASSED attempts; later PASSED attempt satisfied CSAI101 prerequisite.
+[T07] PASS       | Section capacity & meeting time range checks -> Rejected enrolled_count > capacity and end_time <= start_time; accepted valid meeting.
+[T08] PASS       | Partial unique index ux_one_selected_timetable_per_plan (AUD-01) -> Partial unique index ux_one_selected_timetable_per_plan allowed multiple unselected rows and blocked second is_selected=1.
+[T09] PASS       | GPA_ENTRY numeric vs letter mutual exclusivity -> GPA_ENTRY rejected NUMERIC with NULL score and LETTER with non-null numeric_score.
+[T10] PASS       | StudyPlan / PersonalTask / StudySession DDL integrity vs cross-student ownership (service layer) -> DDL-level FK integrity and ON DELETE SET NULL verified; confirmed SQLite DDL alone does NOT enforce cross-student ownership between STUDY_PLAN and PERSONAL_TASK (service-layer enforcement required).
+[T11] PASS       | AI Study Lab upload file_type & quiz question_type positive/negative checks -> Restricted STUDY_UPLOAD to PDF/TXT, verified valid QUIZ_QUESTION types (MCQ, TRUE_FALSE, SHORT_ANSWER), and confirmed invalid question_type ('ESSAY') raises IntegrityError.
+[T12] PASS       | QUIZ_ANSWER option vs short-answer XOR check -> QUIZ_ANSWER XOR constraint verified (rejected both-null and both-set; accepted single mode).
+[T13] PASS       | ASSIGNMENT_SUBMISSION versioning & receipt_code uniqueness -> Multi-version submission history (v1, v2) allowed; duplicate (assignment, student, version) and receipt_code rejected.
+[T14] PASS       | ASSIGNMENT_SUBMISSION immutability (v9.1 triggers vs v9 baseline) -> Reconstructed trigger-free v9 baseline allowed raw SQL UPDATE/DELETE as expected (immutability relies on SubmissionService / SubmissionRepository in v9).
+[T15] PASS       | [REFERENCE-ALGORITHM TEST ONLY] Numeric GPA score mapping to GPA_SCALE range -> REFERENCE-ALGORITHM TEST ONLY (not proof of UniPlan application-service implementation): numeric score 87.5 mapped to GPA_SCALE id=2 ('B+', 3.3 pts) before persistence; out-of-range 105.0 rejected.
+[T16] PASS       | [REFERENCE-ALGORITHM TEST ONLY] Credit-weighted Term & Cumulative GPA calculation -> REFERENCE-ALGORITHM TEST ONLY (not proof of UniPlan application-service implementation): verified credit-weighted GPAs Sem1=3.3000, Sem2=3.4286, Cumulative=3.3900.
+
+--- TARGET B: UniPlan_SQLite_Schema_v9_1_Final.sql ---
+[T01] PASS       | Core 26-table baseline & deferred appendices check -> Verified exact 26 core baseline tables; Appendix A/B deferred/proposed tables remain uncreated.
+[T02] PASS       | Trigger presence/absence check (v9 reconstructed vs v9.1) -> Confirmed both ASSIGNMENT_SUBMISSION immutability triggers are active in v9.1.
+[T03] PASS       | PRAGMA foreign_keys = ON enforcement -> PRAGMA foreign_keys = 1 verified; orphan STUDENT_PROFILE insert rejected.
+[T04] PASS       | User role enum, email uniqueness & profile cascade -> Role enum, email uniqueness, and USER -> STUDENT_PROFILE cascade verified.
+[T05] PASS       | [DATA-STATE TEST ONLY] Prerequisite self-loop (DDL) vs multi-hop cycle check (service layer) -> DATA-STATE TEST ONLY: DDL blocked direct self-loop (203->203) and stored multi-hop edges; multi-hop DAG cycle prevention is NOT enforced by SQLite DDL and requires service-layer enforcement.
+[T06] PASS       | Multi-attempt course completion & prerequisite satisfaction -> Retained both FAILED and PASSED attempts; later PASSED attempt satisfied CSAI101 prerequisite.
+[T07] PASS       | Section capacity & meeting time range checks -> Rejected enrolled_count > capacity and end_time <= start_time; accepted valid meeting.
+[T08] PASS       | Partial unique index ux_one_selected_timetable_per_plan (AUD-01) -> Partial unique index ux_one_selected_timetable_per_plan allowed multiple unselected rows and blocked second is_selected=1.
+[T09] PASS       | GPA_ENTRY numeric vs letter mutual exclusivity -> GPA_ENTRY rejected NUMERIC with NULL score and LETTER with non-null numeric_score.
+[T10] PASS       | StudyPlan / PersonalTask / StudySession DDL integrity vs cross-student ownership (service layer) -> DDL-level FK integrity and ON DELETE SET NULL verified; confirmed SQLite DDL alone does NOT enforce cross-student ownership between STUDY_PLAN and PERSONAL_TASK (service-layer enforcement required).
+[T11] PASS       | AI Study Lab upload file_type & quiz question_type positive/negative checks -> Restricted STUDY_UPLOAD to PDF/TXT, verified valid QUIZ_QUESTION types (MCQ, TRUE_FALSE, SHORT_ANSWER), and confirmed invalid question_type ('ESSAY') raises IntegrityError.
+[T12] PASS       | QUIZ_ANSWER option vs short-answer XOR check -> QUIZ_ANSWER XOR constraint verified (rejected both-null and both-set; accepted single mode).
+[T13] PASS       | ASSIGNMENT_SUBMISSION versioning & receipt_code uniqueness -> Multi-version submission history (v1, v2) allowed; duplicate (assignment, student, version) and receipt_code rejected.
+[T14] PASS       | ASSIGNMENT_SUBMISSION immutability (v9.1 triggers vs v9 baseline) -> v9.1 triggers actively rejected both UPDATE and DELETE on ASSIGNMENT_SUBMISSION.
+[T15] PASS       | [REFERENCE-ALGORITHM TEST ONLY] Numeric GPA score mapping to GPA_SCALE range -> REFERENCE-ALGORITHM TEST ONLY (not proof of UniPlan application-service implementation): numeric score 87.5 mapped to GPA_SCALE id=2 ('B+', 3.3 pts) before persistence; out-of-range 105.0 rejected.
+[T16] PASS       | [REFERENCE-ALGORITHM TEST ONLY] Credit-weighted Term & Cumulative GPA calculation -> REFERENCE-ALGORITHM TEST ONLY (not proof of UniPlan application-service implementation): verified credit-weighted GPAs Sem1=3.3000, Sem2=3.4286, Cumulative=3.3900.
+
+================================================================================
+OVERALL SUMMARY (1 structural parity check + 32 target-test runs across T01-T16 x 2 schemas): PASS=33, FAIL=0, NOT TESTED=0
+================================================================================

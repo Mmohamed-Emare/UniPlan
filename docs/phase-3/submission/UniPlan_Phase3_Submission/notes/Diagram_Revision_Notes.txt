@@ -1,0 +1,22 @@
+UNIPLAN PHASE 3 — DIAGRAM REVISION NOTES
+
+1. System Architecture
+- Promoted the newer role-aware MVC architecture candidate.
+- Corrected the data store to SQLite and the count to 26 core tables.
+- Corrected assignment submission to final-file, immutable version rows with receipts and no grading.
+- AI provider remains unselected; no live external integration is claimed.
+
+2. ERD v5
+- Added the two relationship connectors present in Data Dictionary v9 but absent from the v5 drawing: USER -> COURSE_MATERIAL (uploaded_by) and SECTION -> ANNOUNCEMENT (nullable section target).
+- Expected connector count after correction: 53 (48 non-H-08 + 5 H-08 proposed).
+
+3. UML Class Diagram
+- Rebuilt as a seven-page conceptual design model, organized by module and governance status.
+- Covers 26 core SQL entities, 5 optional/deferred M-16 entities and 4 H-08 proposed entities.
+- H-08 and optional/deferred pages are clearly separated from core design.
+
+4. Sequence Diagrams
+- Created standalone SD-01 from the login flow already present in the supplied consolidated source.
+- Preserved supplied SD-02 through SD-07 editable sources.
+
+Important: SRS/addendum-to-SQL differences for PersonalTask and StudySession status values, H-08 approval, and GPA_SCALE values are documented as open alignment items in the Design Document; source SQL was not silently changed.

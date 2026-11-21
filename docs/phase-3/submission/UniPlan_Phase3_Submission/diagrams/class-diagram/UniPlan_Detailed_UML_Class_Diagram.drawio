@@ -1,0 +1,410 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" modified="2026-11-21T15:00:00.000Z" agent="OpenAI" version="24.7.17" type="device">
+  <diagram id="uniplan-class-1" name="01 - Identity &amp; Academic Core">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title1" value="&lt;b&gt;UniPlan UML Class Diagram — 01 - Identity &amp; Academic Core&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#52657A&quot;&gt;Core identity, course catalogue, prerequisites, course history, role-scoped staff access.&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#183B56;" vertex="1" parent="1">
+          <mxGeometry x="40" y="15" width="1760" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_c1" value="&lt;b&gt;User&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- userId: INTEGER&lt;br/&gt;- fullName: TEXT&lt;br/&gt;- email: TEXT&lt;br/&gt;- passwordHash: TEXT&lt;br/&gt;- role: STUDENT / TA / INSTRUCTOR / ADMIN&lt;br/&gt;- accountStatus: TEXT&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ authenticate()&lt;br/&gt;+ hasRole(role)&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="90" width="300" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_c2" value="&lt;b&gt;StudentProfile&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- userId: INTEGER (PK/FK)&lt;br/&gt;- studentCode: TEXT&lt;br/&gt;- program: TEXT&lt;br/&gt;- academicLevel: TEXT&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ updateAcademicProfile()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="390" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_c3" value="&lt;b&gt;Course&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- courseId: INTEGER&lt;br/&gt;- courseCode: TEXT&lt;br/&gt;- title: TEXT&lt;br/&gt;- credits: REAL&lt;br/&gt;- courseType: TEXT&lt;br/&gt;- isActive: BOOLEAN&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ getActiveSections()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="450" y="70" width="300" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_c4" value="&lt;b&gt;Semester&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- semesterId: INTEGER&lt;br/&gt;- name: TEXT&lt;br/&gt;- startDate: DATE&lt;br/&gt;- endDate: DATE&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ isCurrent(date)&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="450" y="360" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_c5" value="&lt;b&gt;Section&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- sectionId: INTEGER&lt;br/&gt;- courseId: INTEGER&lt;br/&gt;- semesterId: INTEGER&lt;br/&gt;- sectionCode: TEXT&lt;br/&gt;- capacity: INTEGER&lt;br/&gt;- enrolledCount: INTEGER&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ availableSeats()&lt;br/&gt;+ hasCapacity()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="870" y="90" width="300" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_c6" value="&lt;b&gt;SectionMeeting&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- meetingId: INTEGER&lt;br/&gt;- sectionId: INTEGER&lt;br/&gt;- dayOfWeek: TEXT&lt;br/&gt;- startTime: TIME&lt;br/&gt;- endTime: TIME&lt;br/&gt;- room: TEXT&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ overlaps(otherMeeting)&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="90" width="300" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_c7" value="&lt;b&gt;CoursePrerequisite&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- courseId: INTEGER&lt;br/&gt;- prerequisiteCourseId: INTEGER&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ isSatisfiedBy(student)&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="870" y="390" width="300" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_c8" value="&lt;b&gt;StudentCompletedCourse&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- completionId: INTEGER&lt;br/&gt;- studentId: INTEGER&lt;br/&gt;- courseId: INTEGER&lt;br/&gt;- semesterId: INTEGER&lt;br/&gt;- completionStatus: PASSED / FAILED&lt;br/&gt;- completedAt: DATETIME&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ hasPassedAttempt()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="380" width="300" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_c9" value="&lt;b&gt;CourseStaffAssignment&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- staffAssignmentId: INTEGER&lt;br/&gt;- staffUserId: INTEGER&lt;br/&gt;- courseId: INTEGER&lt;br/&gt;- assignedAt: DATETIME&lt;br/&gt;- assignmentStatus: ACTIVE / INACTIVE&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ isAuthorizedFor(course)&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="450" y="700" width="300" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_e1" value="1 — profile — 0..1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p1_c1" target="p1_c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_e2" value="1 — offers — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p1_c3" target="p1_c5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_e3" value="1 — contains — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p1_c4" target="p1_c5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_e4" value="1 — meets at — 1..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p1_c5" target="p1_c6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_e5" value="1 — dependent course — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p1_c3" target="p1_c7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_e6" value="1 — prerequisite course — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p1_c3" target="p1_c7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_e7" value="1 — attempts — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p1_c2" target="p1_c8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_e8" value="1 — course — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p1_c3" target="p1_c8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_e9" value="1 — term — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p1_c4" target="p1_c8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_e10" value="1 — staff assignments — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p1_c1" target="p1_c9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_e11" value="1 — assigned staff — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p1_c3" target="p1_c9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note1" value="&lt;b&gt;Design note:&lt;/b&gt; Prerequisite rule: every listed prerequisite must have at least one PASSED completion attempt in any semester. A previous FAILED attempt does not invalidate a later PASS. Seat availability is simulated as capacity − enrolledCount. TA/Instructor course access requires an ACTIVE course assignment." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F8FB;strokeColor=#CBD5E1;fontColor=#334155;fontSize=11;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1060" width="1760" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="uniplan-class-2" name="02 - Assignment Workspace">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title2" value="&lt;b&gt;UniPlan UML Class Diagram — 02 - Assignment Workspace&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#52657A&quot;&gt;Course-scoped assignment brief creation and immutable final-file submission receipts.&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#183B56;" vertex="1" parent="1">
+          <mxGeometry x="40" y="15" width="1760" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_c1" value="&lt;b&gt;User&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- userId: INTEGER&lt;br/&gt;- fullName: TEXT&lt;br/&gt;- email: TEXT&lt;br/&gt;- role: TA / INSTRUCTOR / ADMIN&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ isAuthorizedFor(course)&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_c2" value="&lt;b&gt;StudentProfile&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- userId: INTEGER (PK/FK)&lt;br/&gt;- studentCode: TEXT&lt;br/&gt;- program: TEXT&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ ownsSubmission()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="420" width="300" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_c3" value="&lt;b&gt;Section&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- sectionId: INTEGER&lt;br/&gt;- courseId: INTEGER&lt;br/&gt;- semesterId: INTEGER&lt;br/&gt;- sectionCode: TEXT&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ containsAssignment()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="500" y="80" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_c4" value="&lt;b&gt;Assignment&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- assignmentId: INTEGER&lt;br/&gt;- sectionId: INTEGER&lt;br/&gt;- createdBy: INTEGER&lt;br/&gt;- title: TEXT&lt;br/&gt;- dueAt: DATETIME&lt;br/&gt;- allowedFileTypes: TEXT&lt;br/&gt;- maxFileSizeMb: INTEGER&lt;br/&gt;- allowResubmission: BOOLEAN&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ validateSubmissionPolicy()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="930" y="150" width="300" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_c5" value="&lt;b&gt;AssignmentSubmission&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- submissionId: INTEGER&lt;br/&gt;- assignmentId: INTEGER&lt;br/&gt;- studentId: INTEGER&lt;br/&gt;- versionNumber: INTEGER&lt;br/&gt;- filePath: TEXT&lt;br/&gt;- originalFilename: TEXT&lt;br/&gt;- fileSizeBytes: INTEGER&lt;br/&gt;- mimeType: TEXT&lt;br/&gt;- submittedAt: DATETIME&lt;br/&gt;- receiptCode: TEXT&lt;br/&gt;- receiptStatus: RECEIVED&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ issueReceipt()&lt;br/&gt;+ nextVersionNumber()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="250" width="300" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_e1" value="1 — briefs — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p2_c3" target="p2_c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_e2" value="1 — creates — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p2_c1" target="p2_c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_e3" value="1 — accepted versions — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p2_c4" target="p2_c5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_e4" value="1 — submits — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p2_c2" target="p2_c5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note2" value="&lt;b&gt;Design note:&lt;/b&gt; Each accepted upload is one immutable version row with a server-generated UTC timestamp and unique receipt. Validate student ownership, course-scoped staff access, deadline, type, size and resubmission rule. There is no assignment grading, score or grader feedback." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F8FB;strokeColor=#CBD5E1;fontColor=#334155;fontSize=11;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1060" width="1760" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="uniplan-class-3" name="03 - Course Planning &amp; GPA">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title3" value="&lt;b&gt;UniPlan UML Class Diagram — 03 - Course Planning &amp; GPA&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#52657A&quot;&gt;Personal course-plan alternatives and a separate personal GPA calculator.&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#183B56;" vertex="1" parent="1">
+          <mxGeometry x="40" y="15" width="1760" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_c1" value="&lt;b&gt;StudentProfile&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- userId: INTEGER (PK/FK)&lt;br/&gt;- studentCode: TEXT&lt;br/&gt;- program: TEXT&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ createCoursePlan()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="50" y="260" width="300" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_c2" value="&lt;b&gt;Course&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- courseId: INTEGER&lt;br/&gt;- courseCode: TEXT&lt;br/&gt;- title: TEXT&lt;br/&gt;- credits: REAL&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ getCreditValue()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="440" y="520" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_c3" value="&lt;b&gt;Semester&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- semesterId: INTEGER&lt;br/&gt;- name: TEXT&lt;br/&gt;- startDate: DATE&lt;br/&gt;- endDate: DATE" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="440" y="60" width="300" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_c4" value="&lt;b&gt;Section&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- sectionId: INTEGER&lt;br/&gt;- courseId: INTEGER&lt;br/&gt;- semesterId: INTEGER&lt;br/&gt;- sectionCode: TEXT&lt;br/&gt;- capacity: INTEGER&lt;br/&gt;- enrolledCount: INTEGER" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="840" y="500" width="300" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_c5" value="&lt;b&gt;StudentCoursePlan&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- planId: INTEGER&lt;br/&gt;- studentId: INTEGER&lt;br/&gt;- semesterId: INTEGER&lt;br/&gt;- title: TEXT&lt;br/&gt;- createdAt: DATETIME&lt;br/&gt;- updatedAt: DATETIME&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ addSection()&lt;br/&gt;+ removeSection()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="840" y="60" width="300" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_c6" value="&lt;b&gt;StudentPlanSection&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- planId: INTEGER (PK/FK)&lt;br/&gt;- sectionId: INTEGER (PK/FK)" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="450" width="300" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_c7" value="&lt;b&gt;Timetable&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- timetableId: INTEGER&lt;br/&gt;- planId: INTEGER&lt;br/&gt;- title: TEXT&lt;br/&gt;- isSelected: BOOLEAN&lt;br/&gt;- createdAt: DATETIME&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ isConflictFree()&lt;br/&gt;+ select()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="60" width="300" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_c8" value="&lt;b&gt;TimetableSection&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- timetableId: INTEGER (PK/FK)&lt;br/&gt;- sectionId: INTEGER (PK/FK)" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1640" y="430" width="300" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_c9" value="&lt;b&gt;GPAScale&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- gradeScaleId: INTEGER&lt;br/&gt;- letterGrade: TEXT&lt;br/&gt;- minScore: REAL&lt;br/&gt;- maxScore: REAL&lt;br/&gt;- gradePoints: REAL (TA values OPEN)&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ resolveGrade(input)&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="840" y="800" width="300" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_c10" value="&lt;b&gt;GPAEntry&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- gpaEntryId: INTEGER&lt;br/&gt;- studentId: INTEGER&lt;br/&gt;- courseId: INTEGER&lt;br/&gt;- semesterId: INTEGER&lt;br/&gt;- inputType: NUMERIC / LETTER&lt;br/&gt;- numericScore: REAL (nullable)&lt;br/&gt;- gradeScaleId: INTEGER&lt;br/&gt;- createdAt: DATETIME&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ calculateWeightedGPA()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="800" width="300" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_e1" value="1 — contains — 1..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p3_c7" target="p3_c8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_e2" value="1 — selected section — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p3_c4" target="p3_c8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_e3" value="1 — owns — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p3_c1" target="p3_c5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_e4" value="1 — plans for — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p3_c3" target="p3_c5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_e5" value="1 — selections — 1..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p3_c5" target="p3_c6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_e6" value="1 — selected in — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p3_c4" target="p3_c6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_e7" value="1 — alternatives — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p3_c5" target="p3_c7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_e8" value="1 — records — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p3_c1" target="p3_c10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_e9" value="1 — course — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p3_c2" target="p3_c10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_e10" value="1 — term — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p3_c3" target="p3_c10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_e11" value="1 — grade mapping — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p3_c9" target="p3_c10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note3" value="&lt;b&gt;Design note:&lt;/b&gt; C-05 boundary: personal section selection is not enrollment and never reserves a seat. Multiple timetable alternatives may exist under a plan, but no more than one is selected (partial unique index). GPA_ENTRY is separate from course planning, references COURSE and SEMESTER, and resolves input via GPA_SCALE. GPA labels/boundaries/points remain OPEN for TA confirmation." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F8FB;strokeColor=#CBD5E1;fontColor=#334155;fontSize=11;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1060" width="1760" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="uniplan-class-4" name="04 - AI Study Lab">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title4" value="&lt;b&gt;UniPlan UML Class Diagram — 04 - AI Study Lab&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#52657A&quot;&gt;Student-owned source material, provider-neutral AI output and practice-question history.&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#183B56;" vertex="1" parent="1">
+          <mxGeometry x="40" y="15" width="1760" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_c1" value="&lt;b&gt;StudentProfile&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- userId: INTEGER (PK/FK)&lt;br/&gt;- studentCode: TEXT&lt;br/&gt;- program: TEXT&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ uploadMaterial()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="50" y="300" width="300" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_c2" value="&lt;b&gt;StudyUpload&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- uploadId: INTEGER&lt;br/&gt;- studentId: INTEGER&lt;br/&gt;- title: TEXT&lt;br/&gt;- filePath: TEXT&lt;br/&gt;- fileType: PDF / TXT&lt;br/&gt;- uploadedAt: DATETIME&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ validateAndExtractText()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="430" y="70" width="300" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_c3" value="&lt;b&gt;AIOutput&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- outputId: INTEGER&lt;br/&gt;- uploadId: INTEGER&lt;br/&gt;- outputType: QUIZ / SUMMARY&lt;br/&gt;- title: TEXT&lt;br/&gt;- generatedContent: TEXT&lt;br/&gt;- createdAt: DATETIME" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="820" y="70" width="300" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_c4" value="&lt;b&gt;QuizQuestion&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- questionId: INTEGER&lt;br/&gt;- outputId: INTEGER&lt;br/&gt;- questionText: TEXT&lt;br/&gt;- questionType: MCQ / TRUE_FALSE / SHORT_ANSWER&lt;br/&gt;- correctAnswer: TEXT (nullable)" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="70" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_c5" value="&lt;b&gt;QuizOption&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- optionId: INTEGER&lt;br/&gt;- questionId: INTEGER&lt;br/&gt;- optionText: TEXT&lt;br/&gt;- isCorrect: BOOLEAN" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="70" width="300" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_c6" value="&lt;b&gt;QuizAttempt&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- attemptId: INTEGER&lt;br/&gt;- outputId: INTEGER&lt;br/&gt;- studentId: INTEGER&lt;br/&gt;- startedAt: DATETIME&lt;br/&gt;- completedAt: DATETIME&lt;br/&gt;- score: REAL (practice only)&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ calculatePracticeScore()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="500" width="300" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_c7" value="&lt;b&gt;QuizAnswer&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- answerId: INTEGER&lt;br/&gt;- attemptId: INTEGER&lt;br/&gt;- questionId: INTEGER&lt;br/&gt;- selectedOptionId: INTEGER (nullable)&lt;br/&gt;- writtenAnswer: TEXT (nullable)&lt;br/&gt;- isCorrect: BOOLEAN" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="500" width="300" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_e1" value="1 — uploads — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p4_c1" target="p4_c2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_e2" value="1 — outputs — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p4_c2" target="p4_c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_e3" value="1 — questions — 0..* (QUIZ)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p4_c3" target="p4_c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_e4" value="1 — options — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p4_c4" target="p4_c5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_e5" value="1 — attempts — 0..* (QUIZ)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p4_c3" target="p4_c6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_e6" value="1 — attempts — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p4_c1" target="p4_c6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_e7" value="1 — answers — 1..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p4_c6" target="p4_c7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_e8" value="1 — answered in — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p4_c4" target="p4_c7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_e9" value="1 — chosen by — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p4_c5" target="p4_c7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note4" value="&lt;b&gt;Design note:&lt;/b&gt; Initial upload restriction: text-readable PDF and plain-text TXT only. AI integration remains provider-neutral; no live provider is selected. Supported practice question types are MCQ, TRUE_FALSE and SHORT_ANSWER. AI output is fallible and practice results are not official assessment or grading." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F8FB;strokeColor=#CBD5E1;fontColor=#334155;fontSize=11;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1060" width="1760" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="uniplan-class-5" name="05 - Study Planning &amp; Tasks">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title5" value="&lt;b&gt;UniPlan UML Class Diagram — 05 - Study Planning &amp; Tasks&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#52657A&quot;&gt;Personal tasks are independent; study sessions belong to a plan and may link to a task.&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#183B56;" vertex="1" parent="1">
+          <mxGeometry x="40" y="15" width="1760" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_c1" value="&lt;b&gt;StudentProfile&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- userId: INTEGER (PK/FK)&lt;br/&gt;- studentCode: TEXT&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ createStudyPlan()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="250" width="300" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_c2" value="&lt;b&gt;Course&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- courseId: INTEGER&lt;br/&gt;- courseCode: TEXT&lt;br/&gt;- title: TEXT&lt;br/&gt;- credits: REAL" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="440" y="650" width="300" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_c3" value="&lt;b&gt;StudyPlan&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- planId: INTEGER&lt;br/&gt;- studentId: INTEGER&lt;br/&gt;- title: TEXT&lt;br/&gt;- startDate: DATE&lt;br/&gt;- endDate: DATE&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ acceptPlan()&lt;br/&gt;+ regenerateSuggestions()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="500" y="70" width="300" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_c4" value="&lt;b&gt;PersonalTask&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- taskId: INTEGER&lt;br/&gt;- studentId: INTEGER&lt;br/&gt;- courseId: INTEGER (nullable)&lt;br/&gt;- title: TEXT&lt;br/&gt;- dueAt: DATETIME (nullable)&lt;br/&gt;- priority: LOW / MEDIUM / HIGH&lt;br/&gt;- status: TODO / IN_PROGRESS / COMPLETED&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ updateStatus()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="500" y="440" width="300" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_c5" value="&lt;b&gt;StudySession&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- sessionId: INTEGER&lt;br/&gt;- planId: INTEGER&lt;br/&gt;- courseId: INTEGER (nullable)&lt;br/&gt;- taskId: INTEGER (nullable)&lt;br/&gt;- title: TEXT&lt;br/&gt;- scheduledStart: DATETIME&lt;br/&gt;- scheduledEnd: DATETIME&lt;br/&gt;- status: PLANNED / IN_PROGRESS / COMPLETED / MISSED / SKIPPED&lt;br/&gt;- notes: TEXT&lt;br/&gt;&lt;hr/&gt;&lt;font color=&quot;#52657A&quot;&gt;+ markCompleted()&lt;br/&gt;+ markMissed()&lt;br/&gt;+ markSkipped()&lt;/font&gt;" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="260" width="300" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_e1" value="1 — owns — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p5_c1" target="p5_c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_e2" value="1 — owns — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p5_c1" target="p5_c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_e3" value="1 — optional course — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p5_c2" target="p5_c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_e4" value="1 — contains — 0..* [composition]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p5_c3" target="p5_c5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_e5" value="1 — optional focus — 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p5_c2" target="p5_c5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_e6" value="1 — optional task — 0..* (same owner)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#526D82;fontColor=#526D82;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;" edge="1" parent="1" source="p5_c4" target="p5_c5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note5" value="&lt;b&gt;Design note:&lt;/b&gt; H-07 rule: PERSONAL_TASK has no plan_id. STUDY_SESSION must belong to exactly one STUDY_PLAN. If a session references a task, both must have the same student owner. Completing a session does not automatically complete the task. Enum differences between the Addendum and SQL are flagged in the document for final SRS alignment." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F8FB;strokeColor=#CBD5E1;fontColor=#334155;fontSize=11;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1060" width="1760" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="uniplan-class-6" name="06 - Optional &amp; Deferred (M-16)">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title6" value="&lt;b&gt;UniPlan UML Class Diagram — 06 - Optional &amp; Deferred (M-16)&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#52657A&quot;&gt;These entities are retained in the dictionary but are not core initial-release scope unless Phase 1 approval confirms them.&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#183B56;" vertex="1" parent="1">
+          <mxGeometry x="40" y="15" width="1760" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_c1" value="&lt;b&gt;User&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- userId: INTEGER&lt;br/&gt;- fullName: TEXT&lt;br/&gt;- role: TEXT" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="70" width="300" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_c2" value="&lt;b&gt;StudentProfile&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- userId: INTEGER (PK/FK)&lt;br/&gt;- studentCode: TEXT" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="460" width="300" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_c3" value="&lt;b&gt;Section&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- sectionId: INTEGER&lt;br/&gt;- courseId: INTEGER&lt;br/&gt;- semesterId: INTEGER&lt;br/&gt;- sectionCode: TEXT" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="470" y="70" width="300" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_c4" value="&lt;b&gt;CourseMaterial&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- materialId: INTEGER&lt;br/&gt;- sectionId: INTEGER&lt;br/&gt;- uploadedBy: INTEGER&lt;br/&gt;- title: TEXT&lt;br/&gt;- filePath: TEXT&lt;br/&gt;- fileType: TEXT" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#F8F1E7;swimlaneFillColor=#F1E1C9;strokeColor=#9A7B50;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="70" width="300" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_c5" value="&lt;b&gt;Announcement&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- announcementId: INTEGER&lt;br/&gt;- createdBy: INTEGER&lt;br/&gt;- sectionId: INTEGER (nullable)&lt;br/&gt;- title: TEXT&lt;br/&gt;- body: TEXT&lt;br/&gt;- createdAt: DATETIME" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#F8F1E7;swimlaneFillColor=#F1E1C9;strokeColor=#9A7B50;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="380" width="300" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_c6" value="&lt;b&gt;Goal&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- goalId: INTEGER&lt;br/&gt;- studentId: INTEGER&lt;br/&gt;- title: TEXT&lt;br/&gt;- targetDate: DATE&lt;br/&gt;- status: TEXT" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#F8F1E7;swimlaneFillColor=#F1E1C9;strokeColor=#9A7B50;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="760" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_c7" value="&lt;b&gt;Routine&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- routineId: INTEGER&lt;br/&gt;- studentId: INTEGER&lt;br/&gt;- title: TEXT&lt;br/&gt;- frequency: TEXT&lt;br/&gt;- isActive: BOOLEAN" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#F8F1E7;swimlaneFillColor=#F1E1C9;strokeColor=#9A7B50;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="760" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_c8" value="&lt;b&gt;JournalEntry&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- entryId: INTEGER&lt;br/&gt;- studentId: INTEGER&lt;br/&gt;- entryDate: DATE&lt;br/&gt;- content: TEXT" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#F8F1E7;swimlaneFillColor=#F1E1C9;strokeColor=#9A7B50;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1380" y="760" width="300" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_e1" value="1 — uploads — 0..* [deferred]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#92744B;fontColor=#92744B;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;dashed=1;" edge="1" parent="1" source="p6_c1" target="p6_c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_e2" value="1 — contains — 0..* [deferred]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#92744B;fontColor=#92744B;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;dashed=1;" edge="1" parent="1" source="p6_c3" target="p6_c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_e3" value="1 — creates — 0..* [deferred]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#92744B;fontColor=#92744B;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;dashed=1;" edge="1" parent="1" source="p6_c1" target="p6_c5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_e4" value="1 — targeted to — 0..* [nullable; deferred]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#92744B;fontColor=#92744B;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;dashed=1;" edge="1" parent="1" source="p6_c3" target="p6_c5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_e5" value="1 — owns — 0..* [deferred]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#92744B;fontColor=#92744B;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;dashed=1;" edge="1" parent="1" source="p6_c2" target="p6_c6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_e6" value="1 — owns — 0..* [deferred]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#92744B;fontColor=#92744B;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;dashed=1;" edge="1" parent="1" source="p6_c2" target="p6_c7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_e7" value="1 — owns — 0..* [deferred]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#92744B;fontColor=#92744B;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;dashed=1;" edge="1" parent="1" source="p6_c2" target="p6_c8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note6" value="&lt;b&gt;Design note:&lt;/b&gt; M-16 governance: COURSE_MATERIAL, ANNOUNCEMENT, GOAL, ROUTINE and JOURNAL_ENTRY are OPTIONAL / DEFERRED in Data Dictionary v9. Do not treat them as required implementation features unless Phase 1 scope approval confirms them." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F8FB;strokeColor=#CBD5E1;fontColor=#334155;fontSize=11;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1060" width="1760" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="uniplan-class-7" name="07 - Proposed H-08 Extension">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title7" value="&lt;b&gt;UniPlan UML Class Diagram — 07 - Proposed H-08 Extension&lt;/b&gt;&lt;br/&gt;&lt;font color=&quot;#52657A&quot;&gt;Separate proposal only — do not promote into the approved physical schema until TA confirmation.&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#183B56;" vertex="1" parent="1">
+          <mxGeometry x="40" y="15" width="1760" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="p7_c1" value="&lt;b&gt;StudentProfile&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- userId: INTEGER (PK/FK)&lt;br/&gt;- studentCode: TEXT" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="70" y="300" width="300" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="p7_c2" value="&lt;b&gt;Course&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- courseId: INTEGER&lt;br/&gt;- courseCode: TEXT&lt;br/&gt;- title: TEXT" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#FFFFFF;swimlaneFillColor=#DCEAF5;strokeColor=#3A6384;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="520" y="740" width="300" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="p7_c3" value="&lt;b&gt;StudentPreference&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- studentId: INTEGER (PK/FK)&lt;br/&gt;- preferredStudyStart: TIME&lt;br/&gt;- preferredStudyEnd: TIME&lt;br/&gt;- preferredSessionMinutes: INTEGER&lt;br/&gt;- preferredBreakMinutes: INTEGER&lt;br/&gt;- maxDailyStudyMinutes: INTEGER&lt;br/&gt;- remindersEnabled: BOOLEAN" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#EEEAFE;swimlaneFillColor=#D9D0FF;strokeColor=#7962A8;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="70" width="300" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="p7_c4" value="&lt;b&gt;StudentAvailability&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- availabilityId: INTEGER&lt;br/&gt;- studentId: INTEGER&lt;br/&gt;- dayOfWeek: INTEGER&lt;br/&gt;- startTime: TIME&lt;br/&gt;- endTime: TIME&lt;br/&gt;- availabilityType: AVAILABLE / UNAVAILABLE" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#EEEAFE;swimlaneFillColor=#D9D0FF;strokeColor=#7962A8;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="70" width="300" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="p7_c5" value="&lt;b&gt;StudentCourseProfile&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- studentId: INTEGER (PK/FK)&lt;br/&gt;- courseId: INTEGER (PK/FK)&lt;br/&gt;- perceivedDifficulty: 1..5&lt;br/&gt;- selfRatedStrength: 1..5" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#EEEAFE;swimlaneFillColor=#D9D0FF;strokeColor=#7962A8;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="410" width="300" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="p7_c6" value="&lt;b&gt;Notification&lt;/b&gt;&lt;br/&gt;&lt;hr/&gt;- notificationId: INTEGER&lt;br/&gt;- studentId: INTEGER&lt;br/&gt;- title: TEXT&lt;br/&gt;- message: TEXT&lt;br/&gt;- notificationType: TEXT&lt;br/&gt;- scheduledAt: DATETIME&lt;br/&gt;- sentAt: DATETIME&lt;br/&gt;- readAt: DATETIME&lt;br/&gt;- channel: IN_APP" style="swimlane;startSize=28;horizontal=1;html=1;whiteSpace=wrap;rounded=0;fillColor=#EEEAFE;swimlaneFillColor=#D9D0FF;strokeColor=#7962A8;fontColor=#183B56;fontSize=12;align=left;verticalAlign=top;spacing=8;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="740" width="300" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="p7_e1" value="1 — preferences — 0..1 [PROPOSED]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7962A8;fontColor=#7962A8;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;dashed=1;" edge="1" parent="1" source="p7_c1" target="p7_c3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p7_e2" value="1 — time blocks — 0..* [PROPOSED]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7962A8;fontColor=#7962A8;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;dashed=1;" edge="1" parent="1" source="p7_c1" target="p7_c4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p7_e3" value="1 — self-assessments — 0..* [PROPOSED]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7962A8;fontColor=#7962A8;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;dashed=1;" edge="1" parent="1" source="p7_c1" target="p7_c5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p7_e4" value="1 — assessed by — 0..* [PROPOSED]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7962A8;fontColor=#7962A8;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;dashed=1;" edge="1" parent="1" source="p7_c2" target="p7_c5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p7_e5" value="1 — receives — 0..* [PROPOSED]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7962A8;fontColor=#7962A8;fontSize=10;labelBackgroundColor=#FFFFFF;endArrow=none;startArrow=none;dashed=1;" edge="1" parent="1" source="p7_c1" target="p7_c6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note7" value="&lt;b&gt;Design note:&lt;/b&gt; H-08 is a proposal awaiting TA confirmation. Tables are not created in SQL v9.1. Availability validation, overlap/day-number rules, reminder behavior and all proposal field limits require approval before integration." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F8FB;strokeColor=#CBD5E1;fontColor=#334155;fontSize=11;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1060" width="1760" height="90" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

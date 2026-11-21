@@ -1,0 +1,15 @@
+EMARA UNIVERSITY — ME Group | UniPlan
+System Architecture and MVC (Draft v1)
+
+Architecture style: Modular Monolith. A single Flask application contains logically separated academic, planning/productivity, GPA, and supporting modules. The application shares one SQLite database for the local/demo build.
+
+MVC mapping:
+- View: Browser-facing HTML/Jinja templates, CSS, and JavaScript for Login, Student, and Administrator interfaces.
+- Controller: Flask routes/controllers that receive requests, check session and role, validate input, invoke services, and select the response.
+- Model: domain entities, business services, and repositories/query functions that enforce domain rules and access SQLite.
+
+Storage: SQLite stores structured records. Assignment/study files are stored in local file storage; the database stores their paths and metadata. Enable SQLite foreign keys on every connection.
+
+Scope boundaries: academic data is generic/simulated; there is no live university records integration. AI Study Lab is planned for later implementation; no AI provider is selected or assumed.
+
+Draft alignment: review controller/model names against the approved Phase 2 SRS and existing Class Diagram before final submission. Confirm GPA scale values and assignment resubmission-history requirements.
