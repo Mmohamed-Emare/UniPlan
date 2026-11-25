@@ -1,0 +1,29 @@
+UniPlan — شرح C-02: User Roles & Authorization
+
+الأدوار الأربعة
+1) Student: يسجل ذاتيًا، ويصل فقط إلى بياناته وخدمات الطالب.
+2) TA: ينشئ/يحدّث Assignment Briefs للكورسات المعيّنة له، ويطّلع على حالات وإيصالات التسليم الخاصة بهذه الكورسات. لا يقوم بالتصحيح أو منح درجات.
+3) Instructor: نفس نطاق إدارة الـ Briefs ومواعيدها للكورسات المعيّنة له، مع الاطلاع على التسليمات وحالتها. لا توجد عملية grading في النطاق الأولي.
+4) Administrator: يدير الكتالوج التجريبي (Courses/Sections/Prerequisites) وحسابات العرض والأدوار وتعيينات أعضاء التدريس.
+
+كيف يعمل الدخول؟
+- شاشة Sign In واحدة للجميع.
+- بعد التحقق من كلمة المرور، يقرأ Flask قيمة USER.role من قاعدة البيانات، ويحفظ user_id وrole في الجلسة.
+- لا نأخذ الدور من اختيار في صفحة HTML؛ لأن المتصفح غير موثوق.
+- نوجّه المستخدم إلى Dashboard المناسب، لكن كل Route محمي بفحص صلاحيات من جهة الخادم.
+
+لماذا COURSE_STAFF_ASSIGNMENT؟
+هذا الجدول يربط TA/Instructor بالكورس الذي يحق له إدارته. وجود حساب TA وحده لا يعني أنه يستطيع تعديل واجبات كل الكورسات. يجب أن يكون له سجل ACTIVE في الجدول للكورس المطلوب.
+
+لماذا ASSIGNMENT.created_by؟
+حتى نعرف من أنشأ الـ Brief ونستطيع تدقيقه. عند إنشاء أو تعديل Brief، يتحقق النظام من الدور ومن تعيين الموظف لهذا الكورس.
+
+مهم في المناقشة
+- Student self-registration مسموح.
+- TA / Instructor / Admin accounts are provisioned by Admin.
+- Staff access is course-scoped.
+- Student records are owner-scoped.
+- No grading of assignment submissions in the initial release.
+- All academic records are simulated; no official SIS/LMS integration.
+
+هذه مسودة تصميمية لـ C-02؛ يجب مطابقة أسماء الكيانات مع Class Diagram النهائي قبل اعتمادها.

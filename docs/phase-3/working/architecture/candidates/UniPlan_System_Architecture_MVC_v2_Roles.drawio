@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" modified="2026-11-20T00:30:00.000Z" agent="OpenAI" version="24.7.17" type="device">
+  <diagram id="system" name="01 System Architecture">
+    <mxGraphModel dx="1500" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1340" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="student" value="&lt;b&gt;STUDENT&lt;/b&gt;&lt;br&gt;Academic &amp;amp; planning features" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAD8C2;strokeColor=#C99A53;fontColor=#4B2E20;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="180" y="35" width="260" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="admin" value="&lt;b&gt;ADMINISTRATOR&lt;/b&gt;&lt;br&gt;Manage simulated data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAD8C2;strokeColor=#C99A53;fontColor=#4B2E20;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="35" width="300" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="browser" value="&lt;b&gt;CLIENT / WEB BROWSER&lt;/b&gt;&lt;br&gt;&lt;br&gt;Single Login • Student UI • Teaching Staff UI • Administrator UI&lt;br&gt;Jinja / HTML templates • CSS • JavaScript" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9F1;strokeColor=#B97852;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="390" y="165" width="780" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="controllers" value="&lt;b&gt;FLASK ROUTES &amp;amp; CONTROLLERS&lt;/b&gt;&lt;br&gt;Receive requests • Read authenticated role from session&lt;br&gt;Authorize route + record ownership • Validate inputs&lt;br&gt;Call module services • Return rendered HTML" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1DCC8;strokeColor=#C99A53;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="465" y="365" width="700" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="cross" value="&lt;b&gt;SHARED SERVICES&lt;/b&gt;&lt;br&gt;Authentication &amp;amp; sessions&lt;br&gt;Role authorization • Validation&lt;br&gt;Upload checks • Error handling" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9F1;strokeColor=#B97852;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="130" y="555" width="350" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="modules" value="&lt;b&gt;MODULE BUSINESS SERVICES&lt;/b&gt;&lt;br&gt;&lt;br&gt;Academic Experience&lt;br&gt;Smart Academic Planning&lt;br&gt;Personal Growth &amp;amp; Productivity&lt;br&gt;GPA Calculation • Assignment Submission" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EBD9;strokeColor=#7E8058;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="545" y="545" width="530" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="ai" value="&lt;b&gt;AI STUDY LAB&lt;/b&gt;&lt;br&gt;&lt;br&gt;Planned / later implementation&lt;br&gt;Provider not selected&lt;br&gt;No live AI integration assumed" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#F5E4D8;strokeColor=#B97852;fontColor=#3F3027;fontSize=14;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="555" width="350" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="data" value="&lt;b&gt;DATA ACCESS / MODEL LAYER&lt;/b&gt;&lt;br&gt;&lt;br&gt;Domain models • Repositories / query functions&lt;br&gt;CRUD operations • Data integrity rules" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1DCC8;strokeColor=#C99A53;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="465" y="785" width="700" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="sqlite" value="&lt;b&gt;SQLITE DATABASE&lt;/b&gt;&lt;br&gt;25 entities • local DB file" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#E0E7D5;strokeColor=#7E8058;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="350" y="1010" width="340" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="files" value="&lt;b&gt;LOCAL FILE STORAGE&lt;/b&gt;&lt;br&gt;Uploaded files outside SQLite&lt;br&gt;DB stores path + metadata" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9F1;strokeColor=#B97852;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="890" y="1010" width="420" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="scope" value="&lt;b&gt;SCOPE BOUNDARIES&lt;/b&gt;&lt;br&gt;Generic / simulated academic data • No live university integration&lt;br&gt;AI Study Lab is planned; provider and integration remain undecided.&lt;br&gt;All active modules share one Flask application and SQLite database." style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFDF8;strokeColor=#C9B18F;fontColor=#76675A;fontSize=13;align=left;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="250" y="1170" width="1080" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" value="uses" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="student" target="browser">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" value="uses" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="admin" target="browser">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" value="request / form data" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="browser" target="controllers">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" value="authenticate / validate" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="controllers" target="cross">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5" value="permitted request" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="controllers" target="modules">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" value="shared controls" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="cross" target="modules">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a7" value="read / write data" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="modules" target="data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a8" value="SQL queries" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="data" target="sqlite">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a9" value="validated upload" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;dashed=1;strokeColor=#63734B;strokeWidth=2;fontSize=12;fontColor=#63734B;" edge="1" parent="1" source="cross" target="files">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a10" value="file path / metadata" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;dashed=1;strokeColor=#63734B;strokeWidth=2;fontSize=12;fontColor=#63734B;" edge="1" parent="1" source="data" target="files">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a11" value="future boundary" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;dashed=1;strokeColor=#63734B;strokeWidth=2;fontSize=12;fontColor=#63734B;" edge="1" parent="1" source="modules" target="ai">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a12" value="HTML / response" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;dashed=1;strokeColor=#63734B;strokeWidth=2;fontSize=12;fontColor=#63734B;" edge="1" parent="1" source="controllers" target="browser">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      <mxCell id="staff" value="&lt;b&gt;TEACHING STAFF&lt;/b&gt;&lt;br&gt;TA / INSTRUCTOR • Assigned courses" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAD8C2;strokeColor=#C99A53;fontColor=#4B2E20;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1"><mxGeometry x="560" y="35" width="360" height="85" as="geometry" /></mxCell><mxCell id="a13" value="uses" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="staff" target="browser"><mxGeometry relative="1" as="geometry" /></mxCell></root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="mvc" name="02 MVC Architecture">
+    <mxGraphModel dx="1500" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1120" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="user" value="&lt;b&gt;ACTORS&lt;/b&gt;&lt;br&gt;Student • TA • Instructor • Administrator" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAD8C2;strokeColor=#C99A53;fontColor=#4B2E20;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="690" y="35" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="view" value="&lt;b&gt;VIEW&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;WHAT THE USER SEES&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Jinja / HTML templates&lt;br&gt;• CSS design system&lt;br&gt;• JavaScript interactions&lt;br&gt;• Login, Student UI, Admin UI&lt;br&gt;• Forms, tables, dashboards" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9F1;strokeColor=#B97852;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="235" width="380" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="controller" value="&lt;b&gt;CONTROLLER&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;REQUEST COORDINATION&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Flask routes / controllers&lt;br&gt;• Read form &amp;amp; URL parameters&lt;br&gt;• Check session and role&lt;br&gt;• Validate request&lt;br&gt;• Call relevant services&lt;br&gt;• Choose response / template" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1DCC8;strokeColor=#C99A53;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="610" y="235" width="380" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="model" value="&lt;b&gt;MODEL&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;APPLICATION DATA &amp;amp; DOMAIN BEHAVIOR&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Domain entities&lt;br&gt;• Business / module services&lt;br&gt;• Repositories / query functions&lt;br&gt;• Domain rules and validation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EBD9;strokeColor=#7E8058;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="235" width="380" height="390" as="geometry" />
+        </mxCell>
+        <mxCell id="db" value="&lt;b&gt;SQLITE DATABASE&lt;/b&gt;&lt;br&gt;One local database file • 26-entity design draft" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#E0E7D5;strokeColor=#7E8058;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="730" width="380" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="&lt;b&gt;LAYERED MVC NOTE&lt;/b&gt;&lt;br&gt;The Service layer sits on the Model / application-domain side. Controllers coordinate requests; they should not contain all business rules.&lt;br&gt;The View does not query SQLite directly. The implementation remains one Flask Modular Monolith." style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFDF8;strokeColor=#C9B18F;fontColor=#76675A;fontSize=13;align=left;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="250" y="920" width="1100" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="b1" value="interacts with" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="user" target="view">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b2" value="user action / request" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="view" target="controller">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b3" value="calls service / model" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="controller" target="model">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b4" value="queries / commits" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="model" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b5" value="records / result" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;dashed=1;strokeColor=#63734B;strokeWidth=2;fontSize=12;fontColor=#63734B;" edge="1" parent="1" source="db" target="model">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b6" value="domain result" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;dashed=1;strokeColor=#63734B;strokeWidth=2;fontSize=12;fontColor=#63734B;" edge="1" parent="1" source="model" target="controller">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b7" value="render page / data" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;dashed=1;strokeColor=#63734B;strokeWidth=2;fontSize=12;fontColor=#63734B;" edge="1" parent="1" source="controller" target="view">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="b8" value="displays result" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;dashed=1;strokeColor=#63734B;strokeWidth=2;fontSize=12;fontColor=#63734B;" edge="1" parent="1" source="view" target="user">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="flow" name="03 Request &amp; Data Flow">
+    <mxGraphModel dx="1500" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1210" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="s1" value="&lt;b&gt;1 • STUDENT BROWSER&lt;/b&gt;&lt;br&gt;Opens Dashboard / sends request" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAD8C2;strokeColor=#C99A53;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="470" y="40" width="660" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" value="&lt;b&gt;2 • FLASK ROUTE / CONTROLLER&lt;/b&gt;&lt;br&gt;Receives request and identifies requested page" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1DDC9;strokeColor=#B97852;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="470" y="165" width="660" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" value="&lt;b&gt;3 • AUTHENTICATION &amp;amp; AUTHORIZATION&lt;/b&gt;&lt;br&gt;Read role from authenticated session • check route permission + record ownership&lt;br&gt;Check ACTIVE course assignment for TA / Instructor • reject unauthorized access" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8EBDD;strokeColor=#C99A53;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="470" y="290" width="660" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="s4" value="&lt;b&gt;4 • DASHBOARD / MODULE SERVICE&lt;/b&gt;&lt;br&gt;Requests academic, timetable, task, and GPA summary data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EBD9;strokeColor=#7E8058;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="470" y="415" width="660" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="s5" value="&lt;b&gt;5 • DATA ACCESS / REPOSITORY&lt;/b&gt;&lt;br&gt;Build parameterized queries and request required records" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8D8C5;strokeColor=#6B432C;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="470" y="540" width="660" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="s6" value="&lt;b&gt;6 • SQLITE DATABASE&lt;/b&gt;&lt;br&gt;Reads relevant tables and returns result rows" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E7D5;strokeColor=#7E8058;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="470" y="665" width="660" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="s7" value="&lt;b&gt;7 • CONTROLLER + VIEW RENDERING&lt;/b&gt;&lt;br&gt;Prepare view data and render Dashboard template" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1DDC9;strokeColor=#B97852;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="470" y="790" width="660" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="s8" value="&lt;b&gt;8 • BROWSER RESPONSE&lt;/b&gt;&lt;br&gt;Student sees the updated Dashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAD8C2;strokeColor=#C99A53;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="470" y="915" width="660" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="flow_note" value="&lt;b&gt;SIMPLIFIED READ FLOW&lt;/b&gt;&lt;br&gt;Controllers and services may make multiple repository calls. Reads and writes should use the data-access layer rather than direct database calls from the View." style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFDF8;strokeColor=#C9B18F;fontColor=#76675A;fontSize=13;align=left;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="270" y="1080" width="1060" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" value="request" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="s1" target="s2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" value="session / role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="s2" target="s3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" value="authorized" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="s3" target="s4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c4" value="data request" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="s4" target="s5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c5" value="SQL query" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="s5" target="s6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c6" value="result data" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="s6" target="s7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c7" value="HTML response" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="s7" target="s8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c8" value="result rows" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;dashed=1;strokeColor=#63734B;strokeWidth=2;fontSize=12;fontColor=#63734B;" edge="1" parent="1" source="s6" target="s5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c9" value="domain data" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=open;dashed=1;strokeColor=#63734B;strokeWidth=2;fontSize=12;fontColor=#63734B;" edge="1" parent="1" source="s5" target="s4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="submission" name="04 Assignment Submission Flow">
+    <mxGraphModel dx="1500" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1640" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="st" value="&lt;b&gt;STUDENT BROWSER&lt;/b&gt;&lt;br&gt;Submits assignment text and optional file" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAD8C2;strokeColor=#C99A53;fontColor=#4B2E20;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="560" y="40" width="480" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="ct" value="&lt;b&gt;ASSIGNMENT ROUTE / CONTROLLER&lt;/b&gt;&lt;br&gt;Check session, role, assignment ownership, and course scope&lt;br&gt;Student: own submission • TA/Instructor: assigned course only" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1DCC8;strokeColor=#C99A53;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="510" y="180" width="580" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="svc" value="&lt;b&gt;ASSIGNMENT SUBMISSION SERVICE&lt;/b&gt;&lt;br&gt;Validate submission data • apply current resubmission rule" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EBD9;strokeColor=#7E8058;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="510" y="335" width="580" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="decision" value="FILE&lt;br&gt;ATTACHED?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#F8EBDD;strokeColor=#C99A53;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="710" y="485" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="validation" value="&lt;b&gt;UPLOAD VALIDATION&lt;/b&gt;&lt;br&gt;Allowed type • size • safe filename" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9F1;strokeColor=#B97852;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="180" y="665" width="380" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="disk" value="&lt;b&gt;LOCAL FILE STORAGE&lt;/b&gt;&lt;br&gt;Actual file saved outside SQLite" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9F1;strokeColor=#B97852;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="180" y="815" width="380" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="textonly" value="&lt;b&gt;TEXT-ONLY SUBMISSION&lt;/b&gt;&lt;br&gt;No file path required" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1DCC8;strokeColor=#C99A53;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="970" y="665" width="380" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="record" value="&lt;b&gt;ASSIGNMENT_SUBMISSION RECORD&lt;/b&gt;&lt;br&gt;Student • Assignment • Text / file path&lt;br&gt;Submitted time • Status • Optional score / feedback" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EBD9;strokeColor=#7E8058;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="485" y="990" width="590" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="db" value="&lt;b&gt;SQLITE DATABASE&lt;/b&gt;&lt;br&gt;Persist submission data and file path&lt;br&gt;(not file bytes)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#E0E7D5;strokeColor=#7E8058;fontColor=#3F3027;fontSize=15;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="610" y="1175" width="350" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="response" value="&lt;b&gt;CONTROLLER RESPONSE&lt;/b&gt;&lt;br&gt;Show confirmation / current status" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAD8C2;strokeColor=#C99A53;fontColor=#4B2E20;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="610" y="1330" width="350" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="rule" value="&lt;b&gt;V2 RESUBMISSION RULE&lt;/b&gt;&lt;br&gt;One current record per student and assignment (UNIQUE assignment_id + student_id). A resubmission updates the current record; previous versions are not retained in v2." style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFFDF8;strokeColor=#C9B18F;fontColor=#76675A;fontSize=13;align=left;verticalAlign=middle;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="210" y="1485" width="1150" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="d1" value="submit" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="st" target="ct">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d2" value="authorized submission" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="ct" target="svc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d3" value="inspect attachment" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="svc" target="decision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d4" value="YES" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="decision" target="validation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d5" value="NO" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="decision" target="textonly">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d6" value="valid file" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="validation" target="disk">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d7" value="stored file path" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="disk" target="record">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d8" value="submission text" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="textonly" target="record">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d9" value="insert / update" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="record" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="d10" value="saved record" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#6B432C;strokeWidth=2;fontSize=13;fontColor=#76675A;" edge="1" parent="1" source="db" target="response">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

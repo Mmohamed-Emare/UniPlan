@@ -1,0 +1,37 @@
+UniPlan — Phase 3 Sequence Diagrams
+Quick explanation notes for the TA
+
+GENERAL ARCHITECTURE USED IN THESE SEQUENCES
+The diagrams follow a layered MVC-style flow:
+Student (Actor) -> Page (Boundary/View) -> Controller -> Service -> Repository/Data Access -> Database.
+- Page: collects the student's input and displays the result.
+- Controller: receives the request and coordinates the use case.
+- Service: contains the main business rules and processing.
+- Repository/Data Access: retrieves or saves application data without placing database logic in the page.
+- Database: stores the application's own local or simulated data.
+Solid arrows are calls. Dashed arrows are returned results. The alt frame shows mutually exclusive outcomes. Self-messages represent internal processing inside a service.
+
+SD-02 — VIEW COURSES
+The student opens the Courses page. The page asks the CourseController for courses for the selected term. The controller delegates to CourseService, which obtains the available course and section records through the CourseRepository. The data is returned back through the layers. The alt fragment handles two outcomes: courses are available and displayed, or the result is empty and the page displays an empty state.
+TA explanation: The use case reads the app's own generic/simulated course catalogue. It does not integrate with or change official university records.
+
+SD-03 — GENERATE CONFLICT-FREE TIMETABLE
+The student selects courses and availability/preferences. The TimetableController asks TimetableService to generate options. The service retrieves available sections, builds candidate schedules, and checks time overlaps. The alt fragment shows either ranked conflict-free options or a message that no conflict-free combination was found.
+TA explanation: Conflict detection is business logic in the service, not in the user interface. The input section data is generic/simulated for the project demo.
+
+SD-04 — CREATE STUDY PLAN
+The student submits goals and available study hours. The StudyPlanService validates the request, retrieves locally available courses/tasks/deadlines, allocates study sessions, and asks the repository to save the plan. The alt fragment handles successful plan creation or invalid input with validation errors.
+TA explanation: The plan is personal to the student and uses data within UniPlan. It does not write to official university systems or alter official schedules/records.
+
+SD-05 — CALCULATE GPA
+The student requests a GPA calculation. GPAService retrieves completed courses that have grades and credit hours, maps each grade using the project's fixed scale, and calculates a credit-weighted GPA:
+GPA = sum(grade points * course credits) / sum(course credits).
+The alt fragment shows a calculated result or a message that no graded courses are available.
+TA explanation: The grade-point mapping is fixed by the project rules. The exact grade-to-point table and rounding policy must match the approved SRS. Ungraded courses are not included in this calculation flow.
+
+SD-06 — GENERATE AI QUIZ
+The student provides their own learning material and quiz settings. MaterialProcessor extracts and validates the text. QuizGenerationService requests questions through AIProviderAdapter, validates/formats the result, and saves the quiz. The alt fragment handles a valid generated quiz, unreadable/invalid material, or AI adapter/generation failure.
+TA explanation: AI Study Lab is planned for a later stage. No AI vendor is selected in this design. AIProviderAdapter is an abstraction so a mock/demo implementation or a later zero-cost provider can be selected without changing the whole use case. The flow uses student-provided material only.
+
+ALIGNMENT CHECK BEFORE SUBMISSION
+The final Phase 2 SRS and Class Diagram were not attached while these files were prepared. Before submitting, compare the exact participant/class names and operation names with those approved documents. Some names (especially Repository, Service, and AIProviderAdapter) are design-level placeholders. Rename or merge them if the approved Class Diagram uses different names, while preserving the responsibilities and interaction order.

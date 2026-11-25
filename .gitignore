@@ -221,3 +221,39 @@ __marimo__/
 
 # macOS metadata
 .DS_Store
+
+# ==========================================
+# UniPlan local-only rules
+# ==========================================
+
+# Local archives and generated delivery bundles
+*.zip
+/docs/archive/
+/docs/phase-2/archive/
+/docs/phase-3/archive/
+/docs/phase-3/submission/packages/
+
+# macOS metadata and empty placeholders
+.DS_Store
+**/.gitkeep
+
+# Local databases and SQLite runtime files
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+
+# Local environment and generated Python files
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+__pycache__/
+.pytest_cache/
+instance/
+
+# Local-only machine inventory snapshots
+/docs/phase-3/working/notes/audit/UniPlan_File_Inventory.txt
+/docs/phase-3/working/notes/audit/UniPlan_File_Inventory_ROOT_20261121.txt

@@ -1,0 +1,14 @@
+H-06 — Course Prerequisites & Section Capacity
+
+القرارات المعتمدة:
+1) المتطلبات السابقة تعمل كسلسلة؛ كل المواد المسجلة كمتطلبات سابقة للمادة يجب اجتيازها.
+2) COURSE_PREREQUISITE جدول ربط ذاتي بين COURSE وCOURSE.
+3) STUDENT_COMPLETED_COURSE يحفظ محاولات الطالب التجريبية PASSED/FAILED.
+4) وجود محاولة PASSED واحدة يكفي لاستيفاء المتطلب، حتى لو سبقتها محاولة FAILED. لا نحذف المحاولات القديمة.
+5) SECTION يخزن capacity وenrolled_count، والمتاح = capacity - enrolled_count.
+6) البيانات تجريبية فقط ولا تمثل تسجيلًا جامعيًا رسميًا أو مباشرًا.
+7) ترتيب التحقق في SD-03: prerequisites ثم capacity ثم تعارض الأوقات ثم توليد البدائل وحفظها.
+8) يجب منع روابط المتطلبات الدائرية (cycles) من خلال تحقق على مستوى التطبيق.
+
+الملفات: Data Dictionary v6، Consistency Review v6، SD-03 Draw.io، SQLite target schema.
+ملاحظة: SQL يحتوي ALTER TABLE توضيحيًا؛ راجع وادمج migration حسب قاعدة البيانات الحالية ولا تشغله عشوائيًا على قاعدة مليئة بالبيانات.

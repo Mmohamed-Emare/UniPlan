@@ -1,0 +1,71 @@
+UNIPLAN ORGANIZATION LOG
+Moved: 66
+Missing: 0
+Errors: 0
+
+MOVED: 01_System_Architecture.png -> docs/phase-3/architecture/exports/previous_versions/01_System_Architecture.png
+MOVED: 02_MVC_Architecture.png -> docs/phase-3/architecture/exports/previous_versions/02_MVC_Architecture.png
+MOVED: 03_Request_Data_Flow.png -> docs/phase-3/architecture/exports/previous_versions/03_Request_Data_Flow.png
+MOVED: 04_Assignment_Submission_Flow.png -> docs/phase-3/architecture/exports/previous_versions/04_Assignment_Submission_Flow.png
+MOVED: 04_Assignment_Submission_Flow_v4.png -> docs/phase-3/architecture/exports/previous_versions/04_Assignment_Submission_Flow_v4.png
+MOVED: Architecture_MVC_Explanation_AR.txt -> docs/phase-3/architecture/notes/Architecture_MVC_Explanation_AR.txt
+MOVED: Architecture_MVC_Explanation_EN.txt -> docs/phase-3/architecture/notes/Architecture_MVC_Explanation_EN.txt
+MOVED: docs/phase-3/database/UniPlan_Data_Dictionary_v1.xlsx -> docs/phase-3/database/data-dictionary/versions/UniPlan_Data_Dictionary_v1.xlsx
+MOVED: UniPlan_Data_Dictionary_v2.xlsx -> docs/phase-3/database/data-dictionary/versions/UniPlan_Data_Dictionary_v2.xlsx
+MOVED: UniPlan_Data_Dictionary_v3_Role_Authorization.xlsx -> docs/phase-3/database/data-dictionary/versions/UniPlan_Data_Dictionary_v3_Role_Authorization.xlsx
+MOVED: UniPlan_Data_Dictionary_v4_Versioned_Submissions.xlsx -> docs/phase-3/database/data-dictionary/versions/UniPlan_Data_Dictionary_v4_Versioned_Submissions.xlsx
+MOVED: UniPlan_Data_Dictionary_v5_C05.xlsx -> docs/phase-3/database/data-dictionary/versions/UniPlan_Data_Dictionary_v5_C05.xlsx
+MOVED: UniPlan_Data_Dictionary_v6_H06.xlsx -> docs/phase-3/database/data-dictionary/versions/UniPlan_Data_Dictionary_v6_H06.xlsx
+MOVED: UniPlan_Data_Dictionary_v7_H07.xlsx -> docs/phase-3/database/data-dictionary/versions/UniPlan_Data_Dictionary_v7_H07.xlsx
+MOVED: UniPlan_Data_Dictionary_v8_H08_PROPOSED.xlsx -> docs/phase-3/database/data-dictionary/versions/UniPlan_Data_Dictionary_v8_H08_PROPOSED.xlsx
+MOVED: UniPlan_C02_Schema_Changes.png -> docs/phase-3/database/erd/exports/previous_versions/UniPlan_C02_Schema_Changes.png
+MOVED: Assignment_Submission_ERD_Slice.png -> docs/phase-3/database/erd/exports/previous_versions/Assignment_Submission_ERD_Slice.png
+MOVED: UniPlan_SQLite_Constraint_Examples_v2.sql -> docs/phase-3/database/sql/versions/UniPlan_SQLite_Constraint_Examples_v2.sql
+MOVED: UniPlan_Phase3_Role_Authorization_SQLite_Patch.sql -> docs/phase-3/database/sql/versions/UniPlan_Phase3_Role_Authorization_SQLite_Patch.sql
+MOVED: UniPlan_C03_C04_Submission_SQLite_Target_Schema.sql -> docs/phase-3/database/sql/versions/UniPlan_C03_C04_Submission_SQLite_Target_Schema.sql
+MOVED: UniPlan_C05_Target_Schema.sql -> docs/phase-3/database/sql/versions/UniPlan_C05_Target_Schema.sql
+MOVED: UniPlan_Target_Schema_v6_H06.sql -> docs/phase-3/database/sql/versions/UniPlan_Target_Schema_v6_H06.sql
+MOVED: UniPlan_H07_Target_Schema_v7.sql -> docs/phase-3/database/sql/versions/UniPlan_H07_Target_Schema_v7.sql
+MOVED: UniPlan_Phase3_Consistency_Review_v2.xlsx -> docs/phase-3/database/reviews/UniPlan_Phase3_Consistency_Review_v2.xlsx
+MOVED: UniPlan_Phase3_Consistency_Review_v3.xlsx -> docs/phase-3/database/reviews/UniPlan_Phase3_Consistency_Review_v3.xlsx
+MOVED: UniPlan_Phase3_Consistency_Review_v4.xlsx -> docs/phase-3/database/reviews/UniPlan_Phase3_Consistency_Review_v4.xlsx
+MOVED: UniPlan_Phase3_Consistency_Review_v5_C05.xlsx -> docs/phase-3/database/reviews/UniPlan_Phase3_Consistency_Review_v5_C05.xlsx
+MOVED: UniPlan_Phase3_Consistency_Review_v6_H06.xlsx -> docs/phase-3/database/reviews/UniPlan_Phase3_Consistency_Review_v6_H06.xlsx
+MOVED: UniPlan_Phase3_Consistency_Review_v7_H07.xlsx -> docs/phase-3/database/reviews/UniPlan_Phase3_Consistency_Review_v7_H07.xlsx
+MOVED: sqlite_validation_log.txt -> docs/phase-3/database/validation/sqlite_validation_log.txt
+MOVED: UniPlan_C02_Role_Authorization_Explanation_AR.txt -> docs/phase-3/notes/decisions/UniPlan_C02_Role_Authorization_Explanation_AR.txt
+MOVED: C03_C04_شرح_بالعربي.txt -> docs/phase-3/notes/decisions/C03_C04_شرح_بالعربي.txt
+MOVED: C05_شرح_بالعربي.txt -> docs/phase-3/notes/decisions/C05_شرح_بالعربي.txt
+MOVED: H06_شرح_بالعربي.txt -> docs/phase-3/notes/decisions/H06_شرح_بالعربي.txt
+MOVED: H07_شرح_بالعربي.txt -> docs/phase-3/notes/decisions/H07_شرح_بالعربي.txt
+MOVED: UniPlan_Phase3_SRS_Alignment_Addendum_v1.3.docx -> docs/phase-3/notes/requirements/UniPlan_Phase3_SRS_Alignment_Addendum_v1.3.docx
+MOVED: UniPlan_Phase3_Package_README.txt -> docs/phase-3/notes/audit/UniPlan_Phase3_Package_README.txt
+MOVED: UniPlan_File_Inventory.txt -> docs/phase-3/notes/audit/UniPlan_File_Inventory.txt
+MOVED: docs/phase-3/uml/sequence-diagrams/UniPlan_Sequence_Diagrams.drawio -> docs/phase-3/uml/sequence-diagrams/source/UniPlan_Sequence_Diagrams.drawio
+MOVED: docs/phase-3/uml/sequence-diagrams/UniPlan_Sequence_Diagrams.drawio.png -> docs/phase-3/uml/sequence-diagrams/exports/legacy_pre_consolidation_v2/UniPlan_Sequence_Diagrams.drawio.png
+MOVED: docs/phase-3/uml/sequence-diagrams/Sequence_Diagrams_Index.png -> docs/phase-3/uml/sequence-diagrams/exports/legacy_pre_consolidation_v2/Sequence_Diagrams_Index.png
+MOVED: docs/phase-3/uml/sequence-diagrams/SD_02_View_Courses.png -> docs/phase-3/uml/sequence-diagrams/exports/legacy_pre_consolidation_v2/SD_02_View_Courses.png
+MOVED: docs/phase-3/uml/sequence-diagrams/SD_03_Generate_Timetable.png -> docs/phase-3/uml/sequence-diagrams/exports/legacy_pre_consolidation_v2/SD_03_Generate_Timetable.png
+MOVED: docs/phase-3/uml/sequence-diagrams/SD_04_Create_Study_Plan.png -> docs/phase-3/uml/sequence-diagrams/exports/legacy_pre_consolidation_v2/SD_04_Create_Study_Plan.png
+MOVED: docs/phase-3/uml/sequence-diagrams/SD_05_Calculate_GPA.png -> docs/phase-3/uml/sequence-diagrams/exports/legacy_pre_consolidation_v2/SD_05_Calculate_GPA.png
+MOVED: docs/phase-3/uml/sequence-diagrams/SD_06_Generate_AI_Quiz.png -> docs/phase-3/uml/sequence-diagrams/exports/legacy_pre_consolidation_v2/SD_06_Generate_AI_Quiz.png
+MOVED: SD_07_Assignment_Submission.png -> docs/phase-3/uml/sequence-diagrams/exports/legacy_pre_consolidation_v2/SD_07_Assignment_Submission.png
+MOVED: a_clean_modern_ui_branding_collage_on_a_light_bei.png -> docs/phase-3/ui-wireframes/a_clean_modern_ui_branding_collage_on_a_light_bei.png
+MOVED: Emara University UniPlan Login Portal.png -> docs/phase-3/ui-wireframes/Emara University UniPlan Login Portal.png
+MOVED: لوحة تحكم الطالب الجامعية الأنيقة.png -> docs/phase-3/ui-wireframes/لوحة تحكم الطالب الجامعية الأنيقة.png
+MOVED: واجهة UniPlan الأكاديمية للجامعة.png -> docs/phase-3/ui-wireframes/واجهة UniPlan الأكاديمية للجامعة.png
+MOVED: واجهة جدول جامعي ذكية أنيقة.png -> docs/phase-3/ui-wireframes/واجهة جدول جامعي ذكية أنيقة.png
+MOVED: لوحة حاسبة المعدل الجامعي الأنيقة.png -> docs/phase-3/ui-wireframes/لوحة حاسبة المعدل الجامعي الأنيقة.png
+MOVED: لوحة مخطط الدراسة الجامعية.png -> docs/phase-3/ui-wireframes/لوحة مخطط الدراسة الجامعية.png
+MOVED: لوحة مختبر الدراسة بالذكاء الاصطناعي.png -> docs/phase-3/ui-wireframes/لوحة مختبر الدراسة بالذكاء الاصطناعي.png
+MOVED: لوحة إدارة جامعة إمارة الحديثة.png -> docs/phase-3/ui-wireframes/لوحة إدارة جامعة إمارة الحديثة.png
+MOVED: UniPlan_Planning_Productivity.png -> docs/phase-3/ui-wireframes/UniPlan_Planning_Productivity.png
+MOVED: UniPlan_Academic_Management.png -> docs/phase-3/ui-wireframes/UniPlan_Academic_Management.png
+MOVED: UniPlan_AI_Study_Lab.png -> docs/phase-3/ui-wireframes/UniPlan_AI_Study_Lab.png
+MOVED: UniPlan_AI_Study_Lab_v2.png -> docs/phase-3/ui-wireframes/UniPlan_AI_Study_Lab_v2.png
+MOVED: UniPlan_Planning_Productivity_v2.png -> docs/phase-3/ui-wireframes/UniPlan_Planning_Productivity_v2.png
+MOVED: UniPlan_Academic_Management_v2.png -> docs/phase-3/ui-wireframes/UniPlan_Academic_Management_v2.png
+MOVED: UniPlan_Phase3_Working_Pack_20Nov.zip -> docs/phase-3/archive/packages/UniPlan_Phase3_Working_Pack_20Nov.zip
+MOVED: UniPlan_Phase3_Consolidated_Working_Package_20Nov2026.zip -> docs/phase-3/archive/packages/UniPlan_Phase3_Consolidated_Working_Package_20Nov2026.zip
+MOVED: UniPlan_Phase3_Sequence_Diagrams_Consolidated_v2.zip -> docs/phase-3/archive/packages/UniPlan_Phase3_Sequence_Diagrams_Consolidated_v2.zip
+MOVED: UniPlan_H08_Proposal_Package.zip -> docs/phase-3/archive/packages/UniPlan_H08_Proposal_Package.zip

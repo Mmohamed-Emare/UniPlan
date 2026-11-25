@@ -19,17 +19,17 @@ This directory contains the system design deliverables for the UniPlan project.
 All design decisions must be consistent with the approved UniPlan SRS.
 
 ## Status
-In Progress
+Design deliverables submitted. This status does not mean application implementation is complete.
 
 
-## Proposed Technology Stack
+## Confirmed Technology Stack
 
 | Layer | Technology | Purpose |
 |---|---|---|
-| Frontend | HTML, CSS, JavaScript | User Interface |
-| Backend | Python, Flask | Application Logic and APIs |
-| Database | PostgreSQL | Structured Data Storage |
+| Frontend | HTML, CSS, JavaScript, Jinja templates | Server-rendered User Interface |
+| Backend | Python, Flask | Application Logic, Routes, and Controllers |
+| Database | SQLite | Local Relational Data Storage |
 | Architecture | Modular Monolith | System Organization |
 | Design Pattern | MVC | Separation of Responsibilities |
 
-**Status:** Proposed — subject to design validation.
+**Status:** Confirmed — aligned with the approved SRS v1.2 and TA confirmation (November 19, 2026).

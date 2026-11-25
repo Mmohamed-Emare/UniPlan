@@ -1,0 +1,64 @@
+EMARA UNIVERSITY — ME Group
+UniPlan | System Architecture & MVC Notes (Draft v1)
+
+1) Architecture style
+يعتمد UniPlan على Modular Monolith: تطبيق Flask واحد، وقاعدة تشغيل واحدة، وكود منظم إلى Modules منفصلة منطقيًا. هذا ليس Microservices؛ لا توجد خدمة مستقلة أو قاعدة بيانات منفصلة لكل Module.
+
+2) Presentation layer (View)
+واجهة الويب داخل المتصفح، وتشمل صفحات Student وAdministrator وصفحة Login. التقنيات المتفق عليها: HTML وCSS وJavaScript، مع قوالب Flask/Jinja عند التنفيذ. الواجهة تعرض البيانات ولا تتصل بقاعدة SQLite مباشرة.
+
+3) Controller layer
+Flask routes/controllers تستقبل الطلبات، وتتحقق من الجلسة والصلاحيات، وتقرأ المدخلات، وتستدعي الخدمة المناسبة، ثم تعيد صفحة HTML أو استجابة مناسبة. يفضّل تنظيمها حسب الموديول؛ ويمكن استخدام Flask Blueprints كوسيلة تنظيمية مقترحة، وليس كقرار نهائي مستقل.
+
+4) Model / business side
+يشمل Domain Models وعمليات الوصول للبيانات (Repositories أو Query Functions) وخدمات الأعمال. الخدمات تنفذ قواعد مثل تسجيل المقررات، توليد بدائل الجدول وفحص التعارضات، تخطيط الدراسة، حساب GPA باستخدام GPA_SCALE، وإدارة تسليم الواجبات. Controller ينسق العملية ولا ينبغي أن يحتوي كل قواعد الأعمال بنفسه.
+
+5) Modules داخل التطبيق
+- Academic Experience: Courses, Sections, Materials, Assignments, Assignment Submissions, Announcements.
+- Smart Academic Planning: Conflict-free timetable alternatives and selected timetable.
+- Personal Growth & Productivity: Study plans, tasks, goals, routines, journal, progress.
+- GPA Calculator: Fixed GPA scale mapping; actual scale values must be approved before implementation.
+- AI Study Lab: Planned / later implementation. لا يوجد مزود AI محدد ولا تكامل فعلي مفترض في هذا التصميم.
+- Administrator functions: Manage simulated courses, students, announcements, reports, and settings according to the agreed UI scope.
+
+6) Data storage
+SQLite هو الاختيار المبدئي لنسخة local/demo. قاعدة البيانات ملف واحد يضم 25 جدولًا في مسودة Data Dictionary v2. يجب تنفيذ PRAGMA foreign_keys = ON لكل اتصال وقبل بدء المعاملة. التواريخ تخزن كنص ISO-8601، والـ Boolean كـ INTEGER 0/1.
+
+7) Uploaded files
+ملفات الواجبات والمواد تظل في Local File Storage خارج SQLite. قاعدة البيانات تحفظ المسار والبيانات الوصفية وحالة التسليم. يجب التحقق من النوع والحجم والاسم والصلاحيات قبل التخزين.
+
+8) Security responsibilities
+- USER.password_hash فقط؛ لا يتم تخزين كلمات المرور كنص واضح.
+- فحص الدور على الخادم وليس إخفاء عناصر الواجهة فقط.
+- التحقق من المدخلات وملفات الرفع على الخادم.
+- استخدام parameterized SQL queries وعدم بناء الاستعلام بضم مدخلات المستخدم نصيًا.
+- عدم الادعاء بوجود تكامل مع سجلات الجامعة الحقيقية. البيانات الأكاديمية تجريبية/عامة.
+
+9) Example request flow: Student Dashboard
+1. الطالب يطلب صفحة Dashboard من المتصفح.
+2. Flask route/controller يستقبل الطلب.
+3. Authentication/authorization يتحققان من الجلسة وأن الدور STUDENT.
+4. Dashboard service يطلب ملخص بيانات المقررات والجداول والمهام وGPA.
+5. Repositories/query functions تنفذ استعلامات parameterized إلى SQLite.
+6. النتائج تعود إلى الخدمة ثم Controller.
+7. Controller يجهز البيانات ويعرض قالب Dashboard.
+8. المتصفح يعرض الصفحة للطالب.
+
+10) Example assignment submission flow
+1. الطالب يرسل نص الواجب وملفًا اختياريًا.
+2. Controller يتحقق من الجلسة والصلاحية والمدخلات.
+3. Assignment service يتحقق من بيانات التسليم ويطبق قاعدة إعادة التسليم الحالية.
+4. إذا كان هناك ملف، يتم التحقق من النوع والحجم والاسم ثم حفظ الملف في Local File Storage.
+5. يتم حفظ المسار والبيانات الوصفية في ASSIGNMENT_SUBMISSION داخل SQLite، وليس محتوى الملف الثنائي.
+6. الإصدار v2 يحتفظ بسجل حالي واحد لكل طالب وواجب؛ إعادة التسليم تحدّث السجل نفسه ولا تحتفظ بتاريخ الإصدارات.
+
+11) TA explanation (short answer)
+اخترنا Modular Monolith لأن المشروع يحتاج فصلًا واضحًا للمسؤوليات دون تعقيد تشغيل خدمات متعددة. استخدمنا MVC لفصل الواجهة عن تنسيق الطلبات وعن البيانات وقواعد الأعمال. SQLite مناسب للنسخة المحلية/التجريبية المتفق عليها، ويمكن الانتقال إلى DBMS آخر مستقبلًا إذا تطلب النشر ذلك، لكن هذا ليس جزءًا من القرار الحالي.
+
+12) Open alignment checks before final submission
+- طابق أسماء Controllers وModels والخدمات مع Class Diagram الفعلي.
+- طابق كل Module وUse Case مع Phase 2 SRS.
+- احسم قيم GPA_SCALE المعتمدة.
+- راجع ما إذا كانت متطلبات التسليم تستلزم حفظ تاريخ كل إعادة إرسال؛ التصميم v2 يحفظ آخر تسليم حالي فقط.
+- راجع حدود ما ينفذ الآن وما يؤجل في AI Study Lab.
+- لا تعتبر هذا الرسم إثباتًا أن البرمجيات أو التكاملات قد نُفذت؛ هو تصميم معماري مقترح.
