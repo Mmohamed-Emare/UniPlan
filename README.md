@@ -3,7 +3,7 @@
 
 **Course:** CSAI 203 – Software Engineering  
 **Institution:** Zewail City of Science and Technology  
-**Project Type:** Individual Project (TA-approved)  
+**Project Type:** Individual Project  
 **Current Deliverable:** Phase 3 – Software Design
 
 ---
